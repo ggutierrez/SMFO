@@ -1,3 +1,9 @@
 *.DS_Store
 helicopters.*
 helicopters2.*
+document/main.aux
+document/main.fdb_latexmk
+document/main.fls
+document/main.log
+document/main.synctex.gz
+lab1/.ipynb_checkpoints/Lab1LinearRegression-checkpoint.ipynb
