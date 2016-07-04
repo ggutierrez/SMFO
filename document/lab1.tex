@@ -1,0 +1,37 @@
+% -*- root: main.tex -*-
+\section{Lab session 1}
+
+\paragraph{Noise between realizations of the experiement.}
+
+\begin{figure}
+  \begin{subfigure}[h]{.5\linewidth}
+    \input{../lab1/t1_vs_t2.pgf}
+    \caption{Comparison between the times meassured in the two realizations.}
+    \label{fig_t1t2}
+  \end{subfigure}
+  \begin{subfigure}[h]{.5\linewidth}
+    \input{../lab1/tail_length_vs_arm_length.pgf}
+    \caption{Comparison between the tail and the arm lengths.}
+    \label{fig_tl_al}
+  \end{subfigure}
+\end{figure}
+
+\paragraph{Relations.}
+According to the provided data, there seems to be a linear correlation between
+the wing length and the falling times in the two realizations. This correlation
+is plotted in~\cref{fig_wl_times}.
+\begin{figure}
+  \centering
+  \input{../lab1/wing_length_vs_times.pgf}
+  \caption{Correlation between the wing length (in centimeters) and the falling
+  times (in seconds) of the two realizations.}
+  \label{fig_wl_times}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \input{lab1/arm_length_vs_times.pgf}
+  \caption{Correlation between the arm length (in centimeters) and the falling
+  times (in seconds) of the two realizations.}
+  \label{fig_al_times}
+\end{figure}
