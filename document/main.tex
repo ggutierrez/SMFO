@@ -1,0 +1,37 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{pgf}
+\usepackage{import}
+
+\title{Gaussian optimization}
+\author{Juan David Gil \and Gustavo Gutiérrez}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+This is a report on the course \emph{Statistical Modelling for Optimization}
+held at the \emph{Universidad Tecnológica de Pereira} from June 28th to July
+1st. The practical part of course consisted of four lab sessions with a common
+goal of optimizing the flying time of a paper helicopter model. In this document
+we report our findings and caonclusions of the lab sessions.
+\section{Problem}
+
+\section{Lab session 1}
+
+\paragraph{Noise between realizations of the experiement.}
+\begin{figure}
+\input{../lab1/t1_vs_t2.pgf}
+\label{fig_t1t2}
+\caption{Comparison between the two realizations. Time is measured in seconds.}
+\end{figure}
+
+\begin{figure}
+\input{lab1/wing_length_vs_times.pgf}
+\label{fig_wl_times}
+\caption{Correlation between the wing length (in centimeters) and the falling
+times (in seconds) of the two realizations.}
+\end{figure}
+
+\end{document}
