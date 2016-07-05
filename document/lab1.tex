@@ -24,7 +24,7 @@ data.
   \caption{}
 \end{figure}
 
-\paragraph{Relations in input data.}
+\paragraph{Relations in the input data.}
 According to the provided data, we can appreciate some relation between
 different variables. For instance, the wing length and the falling times seems
 to be linearly correlated according to~\cref{fig_wl_times}. The same correlation
@@ -47,10 +47,27 @@ in~\cref{fig_tl_al}.
   \label{fig_al_times}
 \end{figure}
 
-\paragraph{Linear regression}
-A first model $m(X)$ was approximated by using a linear regression. Hence $m(X)
-= B(X)\bhat$. This gave the following results:
-\begin{align*}
-  covBeta = \input{../lab1/covBeta.tex} &  
-  &\bhat = \input{../lab1/beta.tex}
-\end{align*}
+\paragraph{Linear regression.} A first model $m(X)$ was approximated by using a
+linear regression. The basis functions were $\phi(x) = [1, x_0, x_0^2]$. Those
+functions were based on effects on the wing length ($x_0$). However, the $R^2$
+for the obtained model was $0.237$. A better model is obtained by using the
+basis functions $\phi(x) = [1, x, x_3^2, \sin(x_3), \cos(x_0)]$. With these
+functions the $R^2$ statistic for the model is $0.778$ which (graphically) fits
+better the data according to~\cref{fig_goodlr}.
+\begin{figure}
+  \centering
+  \input{../lab1/reg_beterr2.pgf}
+  \caption{Linear regression based prediction.}
+  \label{fig_goodlr}
+\end{figure}
+
+\begin{comment}
+  % In case there is some space at the end this is the plot of the first model
+  \begin{figure}
+    \centering
+    \input{../lab1/reg_badr2.pgf}
+    \caption{Comparison between the times measured in the two realizations.}
+    \label{fig_badlr}
+  \end{figure}
+\end{comment}
+
