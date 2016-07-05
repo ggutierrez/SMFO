@@ -41,19 +41,23 @@ in~\cref{fig_tl_al}.
 
 \begin{figure}
   \centering
-  \input{lab1/arm_length_vs_times.pgf}
+  \input{../lab1/arm_length_vs_times.pgf}
   \caption{Correlation between the arm length (in centimeters) and the falling
   times (in seconds) of the two realizations.}
   \label{fig_al_times}
 \end{figure}
 
+Despite of the described relations among the different variables, there are no
+strong correlations among the variables of the model. Linear correlations are
+just apparent but not clearly strong.
+
 \paragraph{Linear regression.} A first model $m(X)$ was approximated by using a
 linear regression. The basis functions were $\phi(x) = [1, x_0, x_0^2]$. Those
-functions were based on effects on the wing length ($x_0$). However, the $R^2$
-for the obtained model was $0.237$. A better model is obtained by using the
-basis functions $\phi(x) = [1, x, x_3^2, \sin(x_3), \cos(x_0)]$. With these
-functions the $R^2$ statistic for the model is $0.778$ which (graphically) fits
-better the data according to~\cref{fig_goodlr}.
+functions were based on effects on the wing length ($x_0$). However, the
+coefficient of determination ($R^2$) for the obtained model was $0.237$. A
+better model is obtained using the basis functions $\phi(x) = [1, x, x_3^2,
+\sin(x_3), \cos(x_0)]$. $R^2$  for the new model is $0.778$ which (graphically)
+fits better the data according to~\cref{fig_goodlr}.
 \begin{figure}
   \centering
   \input{../lab1/reg_beterr2.pgf}
@@ -70,4 +74,7 @@ better the data according to~\cref{fig_goodlr}.
     \label{fig_badlr}
   \end{figure}
 \end{comment}
-
+Several functions were tried as basis. The ones with more effect are the
+constant function ($1$), the linear effect on all the variables ($x$), the
+cosine effect on the wing length ($\cos(x_0)$). However the other functions also
+contribute to improve $R^2$.
