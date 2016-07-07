@@ -81,22 +81,23 @@ evidence that the model is suitable to make predictions.
 \end{figure}
 
 \begin{figure}[h]
-	\centering
-	\input{../lab3/mloovsreal.pgf}
-	\caption{Actual falling time values vs. \emph{loo} predictions.}
-	\label{mloo_vs_real}
+	\begin{subfigure}{.5\linewidth}
+		\centering
+		\scalebox{0.8}{\input{../lab3/mloovsreal.pgf}}
+		\caption{Actual falling time values vs. \emph{loo} predictions.}
+		\label{mloo_vs_real}
+	\end{subfigure}
+	\begin{subfigure}{.5\linewidth}
+		\centering
+		\scalebox{0.8}{\input{../lab3/mlooresidualsvsreal.pgf}}
+		\caption{\emph{Loo} residuals vs. mean predicted value.}
+		\label{mlooresiduals_vs_real}
+	\end{subfigure}
 \end{figure}
 
 \paragraph{}
 For further model validation the standardized residuals of the leave one out
 predictions where also computed and plotted against the mean predicted
-value(standardized for this case), the plot shows something not very similar to a
-linear tendency according to a normal distribution $\mathcal{N}(0,1)$ as will be
-expected for better fitted models.
-
-\begin{figure}[h]
-	\centering
-	\input{../lab3/mlooresidualsvsreal.pgf}
-	\caption{\emph{Loo} residuals vs. mean predicted value.}
-	\label{mlooresiduals_vs_real}
-\end{figure}
+value(standardized for this case), the plot shows something not very similar to
+a linear tendency according to a normal distribution $\mathcal{N}(0,1)$ as will
+be expected for better fitted models.
