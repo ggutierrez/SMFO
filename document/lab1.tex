@@ -105,13 +105,48 @@ with the provided mean ($\mu$) and the kernel as the covariance parameter.
 parameters. The plot on the left uses $\theta=0.8$ which leads to a wider
 ``waves''.
 \begin{figure}
-    \centering
-    \input{../lab1/gpsamples.pgf}
-    \caption{Sample from a Gaussian process with kernel evaluated using the wing
-    length of the helicopter. The kernel for the left sampling of five functions
-    is \emph{Matern32} with $\sigma^2=1.0$ and $\theta=0.2$. The second plot is
-    the same kernel, this time with only three functions and $\theta=0.8$}
-    \label{fig_gpsamples}
-  \end{figure}
+  \centering
+  \input{../lab1/gpsamples.pgf}
+  \caption{Sample from a Gaussian process with kernel evaluated using the wing
+  length of the helicopter. The kernel for the left sampling of five functions
+  is \emph{Matern32} with $\sigma^2=1.0$ and $\theta=0.2$. The second plot is
+  the same kernel, this time with only three functions and $\theta=0.8$}
+  \label{fig_gpsamples}
+\end{figure}
 
-\paragraph{Gaussian process regression for prediction.} 
+\paragraph{Gaussian process regression for prediction of a toy function.} In
+this point we are asked to approximate the function $f(x) = \sin(3\pi x)$.
+
+\begin{figure}
+  \centering
+  \input{../lab1/ftest.pgf}
+  \caption{Plots for $f(x) = \sin(3\pi x)$ using $150$ (left) and $30$ (right)
+  samples.}
+  \label{fig_gpsamples}
+\end{figure}
+
+The prediction was performed using the \emph{Matern23} kernel as it provided the
+best results. The model and its variance are presented
+in~\cref{fig_gppredftest}. $20$ points were predicted using the two trained
+models. The quality of the predictions is measured by the sum of variances
+between real and estimated values. The respective quantities were: $0.000132$
+and $0.095207$ which let us conclude that the model trained with $150$ samples
+is better than the one trained with just $30$. This is also appreciated in the
+plots by looking at the variance. The light blue area is quite noticeable for
+the second model.
+
+\begin{figure}
+  \begin{subfigure}[h]{.5\linewidth}
+    \input{../lab1/predftest.pgf}
+    \caption{Predictions for model trained with $150$ samples.}
+    \label{fig_predftest}
+  \end{subfigure}
+  \begin{subfigure}[h]{.5\linewidth}
+    \input{../lab1/predftest2.pgf}
+    \caption{Predictions for model trained with $30$ samples.}
+    \label{fig_predftest2}
+  \end{subfigure}
+  \caption{GP predictions for data sampled from $f(x) = \sin(3\pi x)$ of $20$
+   points (in red) using a \emph{Matern23} kernel.}
+  \label{fig_gppredftest}
+\end{figure}
