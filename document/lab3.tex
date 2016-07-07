@@ -8,33 +8,30 @@ different observers.
 
 \subsection{Analyzing Data}
 
-The collected data was further analyzed in order to determine the observation
-noise, and other correlations of the variables used by the model. Initially the
-4 falling times were plotted, in~\cref{fig_EX1_EX1,fig_EX1_EX2} are illustrated
-two scatter plots which represents the measurements from two observers for the
-same throw and from the same observer for different throws. Between different
-observers there is not a lot of noise as in the measurement for different
-throws. despite of that fact, in a first setting a Gaussian Process model was
-fitted using only two falling times, the average time of the first throw and the
-average time of the second throw.
+The collected data was further analyzed to inspect the observation noise and
+possible correlations among the model variables. \Cref{fig_EX1_EX1,fig_EX1_EX2}
+presents the correlations between the falling times registered by the two
+observers for every throw. There is no much noise between the observers of each
+throw. However there is considerable noise between the different throws. Despite
+of that, in a first setting a Gaussian Process model was fitted using only two
+falling times corresponding to the average times of the two throws.
 
 In that setting the leave one out function had to be modified in order to
-retrieve the two observations for a same set of parameters or helicopter, then a
-$Q2$ quality measure was used to measure the prediction power of the proposed
-model, however the $Q2$ was very low, approximately $0.1$, the recommended value
-to state that the model was correct was at least $0.5$, the model is better when
-the $Q2$ is close to one.
+retrieve the two observations for the same set of parameters. The power
+prediction of the model was computed by a $Q2$ quality measure. The result was
+around $0.1$ which is pretty bad as the value should be above $0.5$ and is
+better when close to $1.0$.
 
-One of the assumptions for the $Q2$ to not be as high as expected was that the
-gathered data was very noisy and didn't expose the correlations between some of
-the variables and the falling time, according to some prior assumptions made,
-for example, that the wing angle and the falling time were linear increasingly
-correlated, the wing length to tail ratio was also expected to have a linear
-correlation with falling time. In~\cref{fig_wtr_vs_obs2} the linear correlation
-between the ratio and the falling time is not as clear as
-in~\cref{fig_wtr_vs_avg4}. While in the first figure only the measurement of one
-observer was plotted in the second figure the average of all four measurements
-was taken, exposing a better linear correlation, as expected.
+The conclusion on the obtained value for $Q2$  was that the gathered data was
+very noisy and did not expose the correlations between the model variables and
+the falling time. Some prior conclusions from a former lab exposed an increasing
+linear correlation between the wing angle and the falling time. This kind of
+correlation was also present with the wing length to tail ratio.
+In~\cref{fig_wtr_vs_obs2} the linear correlation between the ratio and the
+falling time is not as clear as in~\cref{fig_wtr_vs_avg4}. While in the first
+figure only the measurement of one observer was plotted in the second figure the
+average of all four measurements was taken, exposing a better correlation, as
+expected.
 
 \begin{figure}
 	\begin{subfigure}[h]{.5\linewidth}
