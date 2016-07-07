@@ -11,23 +11,23 @@ a DoE were measured using several measures that were defined and explained in
 the lecture sessions as follows:
 
 \begin{description}
-	\item[Maximin:] The minimum distance between two points should be large, then
+	\item[MaxiMin:] The minimum distance between two points should be large, then
 	the larger the measure the better the DoE.
 
-	\item[Minmax:] The maximum distance between any point in the space and a point
+	\item[MiniMax:] The maximum distance between any point in the space and a point
 	in DoE should be small, hence, the smaller the measure the better the DoE.
 
 	\item[Discrepancy:] The less the discrepancy the better the DoE, converging to
 	the uniform distribution.
 \end{description}
 
-For the case it was necessary to program methods to generate experiments, The
-\emph{Latin Hypercube} and the \emph{Kmeans}, both these methods were compared
-with a random sample using the discrepancy measures and some plots.
-\Cref{tab:doe_eval} presents the quality evaluation for each DoE. For our
-setting, the latin hypercube exhibited the best behavior, being the second best
-one for all the criteria, even though the random method is the best evaluated by
-discrepancy and \emph{maximin}, in \emph{minimax} is the worst one.
+The methods for using \emph{latin hypercube} and \emph{k-means} were implemented
+to generate the experiments. Their results were compared with a random sampling
+using discrepancy methods and visual inspection. \Cref{tab:doe_eval} presents
+the quality evaluation for each DoE. For our setting, the latin hypercube
+exhibited the best behavior ranking on the second place for all the criteria.
+The random approach obtained the best evaluations on discrepancy and
+\emph{MaxiMin} but got the worst rank for \emph{MiniMax}.
 
 %TODO: verb's tense in the paragraph above
 \begin{table}[h]
@@ -35,36 +35,35 @@ discrepancy and \emph{maximin}, in \emph{minimax} is the worst one.
 	% \begin{tabular}{l*{6}{c}r}
 	\begin{tabular}{lrrr}
 		\toprule
-		DoE             & Discrepancy & Maximin & MiniMax \\
+		DoE             & Discrepancy & MaxiMin & MiniMax \\
 		\midrule
 		Random          & 0.122       & 0.542   & 0.662 \\
 		Latin Hypercube & 0.2         & 0.527   & 0.611 \\
-		Kmeans          & 0.527       & 0.424   & 0.474 \\
+		K-means          & 0.527       & 0.424   & 0.474 \\
 		\bottomrule
 	\end{tabular}
 	\caption{DoE quality evaluation} 
 	\label{tab:doe_eval} 
 \end{table}
 
-% TODO: punctuation
-Kmeans outperforms the Latin hypercube method using the minimax criteria, even
-though if one takes a look at the projections of the points on some variables
-the points distribute as showed in~\cref{fig_wl_vs_ww_lhd,fig_wl_vs_ww_kmeans},
-this plots show that the latin hypercube has better projection capacity that the
-kmeans for our setting. Thus, the Latin hypercube was chosen as the DoE.
+K-means outperforms the latin hypercube method on the MiniMax criterion.
+However, according to~~\cref{fig_wl_vs_ww_lhd,fig_wl_vs_ww_kmeans}, latin
+hypercube has a better projection capacity than k-means. In consequence  we
+chose the latin hypercube as the method for the DoE.
 
 \begin{figure}
 	\begin{subfigure}[h]{.5\linewidth}
 		\input{../lab2/wing_width_vs_wing_length_lhd.pgf}
-		\caption{Wing length against Wing width.}
+		\caption{Wing length vs. wing width for the latin hypercube}
 		\label{fig_wl_vs_ww_lhd}
 	\end{subfigure}
 	\begin{subfigure}[h]{.5\linewidth}
 		\input{../lab2/wing_width_vs_wing_length_kmeans.pgf}
-		\caption{Wing length against wing width.}
+		\caption{Wing length vs. wing width for k-means.}
 		\label{fig_wl_vs_ww_kmeans}
 	\end{subfigure}
 	\caption{Plots of DoE projected in a 2D space.}
 \end{figure}
 
-After this process it was necessary to transform the DoE to the printing space in which it had to fulfill several constraints to be printed.
+After this process it was necessary to transform the DoE to the printing space
+in which it had to fulfill several constraints to be printed.
