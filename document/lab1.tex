@@ -87,10 +87,25 @@ regression are confirmed by the following vector of p-values: $\langle 0.0,
 high probability that all the basis functions contribute to the regression as
 each value is close to $0.0$.
 
-\paragraph{Influence of physical quantities.}
+\paragraph{Influence of other physical quantities.}
+In this point we are interested in the effect of other physical properties in
+the experiment. Specifically, we were suggested to observe the angle between the
+wing and the tail and additionally we computed the wing area and the wingspan
+(distance between the farthest points of the two wings). \Cref{fig_newphysics}
+presents the relation between those measures and the flying time. The figure
+shows a clear linear trend between the angle and the flight time. Moreover, the
+slope of that trend suggest the angle as a good candidate to optimize. The other
+measures are not as promising. There is no clear trend in the wing area nor in
+the wingspan.
 
-
-\paragraph{Region of interest for optimization.}
+ \begin{figure}
+  \centering
+  \input{../lab1/otherphisicalquant.pgf}
+  \caption{New physical measures that might affect the experiment. Left: angle
+  (in degrees) between wing and tail. Middle: area of the wing
+  (in~\si{\centi\metre\squared}). Right: wingspan (in~\si{\centi\metre}). }
+  \label{fig_newphysics}
+\end{figure}
 
 \subsection{Gaussian process regression}
 
