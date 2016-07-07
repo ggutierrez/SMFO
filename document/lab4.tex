@@ -1,35 +1,75 @@
 % -*- root: main.tex -*-
 \section{Lab session 4}
 
-The previous Lab session was about deealing with GP regression and modifying the measurement variables and the model variables in order to find a GP model suitable to explain data. In this Lab session the objective was to take that trained GP model and optimizing it with one or a mixture of the techniques reviewed in class. In general the optimization process of the trained model can be resumed as follows:
+The previous Lab session was about dealing with GP regression and modifying the
+measurement variables and the model variables in order to find a GP model
+suitable to explain data. In this Lab session the objective was to take that
+trained GP model and optimizing it with one or a mixture of the techniques
+reviewed in class. In general the optimization process of the trained model can
+be resumed as follows:
 
 \begin{enumerate}
-	\item Generate $N$ ($N = 1000$ for this case) random points $H = \{ h_1,...,h_N \}$ of your input variables, which can be between some interval in which the optimal value could be found or in all input space.
-	\item It's important to multiply the falling times by $-1$ given the fact the optimization is looking to minimize not maximize.
-	\item Take each sample point $h_i$ and compute a function to evaluate the improvement $I(h_i)$ of this sample over the best possible time value in the model observations. This can be done in two ways, either using an optimization process to find the value that maximizes the improvement function $I$ from $h_i$ or just evaluating $I(h_i)$.
-	\item from all the $N$ points choose the point $h_i$ with the best value for $I$.
-	\item The chosen point represents a new helicopter to be printed, then this new helicopter must be throw four times (in our setting).
-	\item After throwing the helicopter, the new data has to be incorporated to the model observations in order to train the model again.
-	\item Go to step one to start again until the flight time of the helicopter is considered to be acceptable or before running out of time.
+	\item Generate $N$ ($N = 1000$ for this case) random points $H = \{
+	h_1,\ldots,h_N \}$ of your input variables, which can be between some interval
+	in which the optimal value could be found or in all input space.
+
+	\item It is important to multiply the falling times by $-1$ because the
+	optimization is a minimization and not a maximization.
+
+	\item Take each sample point $h_i$ and compute a function to evaluate the
+	improvement $I(h_i)$ of this sample over the best possible time value in the
+	model observations. This can be done in two ways, either using an optimization
+	process to find the value that maximizes the improvement function $I$ from
+	$h_i$ or just evaluating $I(h_i)$.
+
+	\item from all the $N$ points choose the point $h_i$ with the best value for
+	$I$.
+
+	\item The chosen point represents a new helicopter to be printed, then this
+	new helicopter must be throw four times (in our setting).
+
+	\item After throwing the helicopter, the new data has to be incorporated to
+	the model observations in order to train the model again.
+
+	\item Go to step one to start again until the flight time of the helicopter is
+	considered to be acceptable or before running out of time.
 \end{enumerate}
 
 \subsection{Improvement function $I$}
 
 The improvement function is a way to quantify the improvement of the optimal value of the model given a new sample from the input space, for this case the improvement function used was the expected improvement which is a model based optimization method, suitable for the GP model trained for this case. The idea behind the expected improvement is to find the point which maximizes the next function:
 
-\begin{equation}
-	EI(x) = \sqrt{c(x,x)}(u(x)cdf(x) + pdf(u(x))), \\
-	\text{ where } u(x) = \frac{min(F) - m(x)}{\sqrt{c(x,x)}}
-\end{equation}
+\begin{equation*}
+	\mt{EI}(x) = \sqrt{c(x,x)}(u(x) \mt{cdf}(x) + \mt{pdf}(u(x))), \\
+	\text{ where } u(x) = \frac{\mt{min}(F) - m(x)}{\sqrt{c(x,x)}}
+\end{equation*}
 
 \subsection{Optimization Results}
 
-Given that the time for running the optimization was limited, only one optimized helicopter was printed and tested. Other implementation issue was found in the Expected Improvement function optimization step, which dind't allow the EI to be fully optimze in order to get a better estimate, so the printed helicopter was subject to that matter. Taking the trained modeland appliying the method explained before a new optimal helicopter was found with the following dimensions:
+Given that the time for running the optimization was limited, only one optimized
+helicopter was printed and tested. Other implementation issue was found in the
+Expected Improvement function optimization step, which did not allow the \mt{EI}
+to be fully optimized in order to get a better estimate, so the printed
+helicopter was subject to that matter. Taking the trained model and applying the
+method explained before a new optimal helicopter was found with the following
+dimensions:
 
-\begin{equation}
-	X^* = (wl = 6.500, ww = 4.453, tl = 7.952, al = 12.472)
-\end{equation}
+\begin{equation*}
+	X^* = (\mt{wl} = 6.500, \mt{ww} = 4.453, \mt{tl} = 7.952, \mt{al} = 12.472)
+\end{equation*}
 
-The dimensions given for the new optimal helicopter made sense with some prior assumptions, for example that a big arm length means a bigger wing angle which makes an helicopter suitable to fly longer, however the wing length to tail ratio is close to one, which does not give a good flying time according to \ref{fig_wtr_vs_avg4}. Nevertheless the printed helicopter was thrown from the same place where the observed data was gathered.
+The dimensions given for the new optimal helicopter made sense with some prior
+assumptions, for example that a big arm length means a bigger wing angle which
+makes an helicopter suitable to fly longer, however the wing length to tail
+ratio is close to one, which does not give a good flying time according
+to~\cref{fig_wtr_vs_avg4}. Nevertheless the printed helicopter was thrown from
+the same place where the observed data was gathered.
 
-In average the new optimal helicopter took $5.025$ seconds to touch the floor, which is better than all the observed data except for one which had a falling time of $5.4625$, the reason for this is that the conditions in which the new optimal helicopter were different as the conditions of the gathered data set, besides the measurement error between realizations also affects the measurement given that the average of four measurements was took. Despite of that fact the trained model predicts a falling time for the new point $X^*$ which is the best falling time on the dataset. 
+In average the new optimal helicopter took $5.025$ seconds to touch the floor,
+which is better than all the observed data except for one which had a falling
+time of $5.4625$, the reason for this is that the conditions in which the new
+optimal helicopter were different as the conditions of the gathered data set,
+besides the measurement error between realizations also affects the measurement
+given that the average of four measurements was took. Despite of that fact the
+trained model predicts a falling time for the new point $X^*$ which is the best
+falling time on the dataset.
