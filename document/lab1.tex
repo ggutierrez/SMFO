@@ -89,3 +89,29 @@ Some
 \paragraph{Region of interest for optimization.}
 
 \subsection{Gaussian process regression}
+
+\paragraph{Kernel names.} In the first point we are presented a several kernel
+implementations and asked to identify them. The first two implementations are
+actually the same and both represent the \emph{Matern32} kernel. The third is
+the implementation of the constant kernel. The fourth implementation is for the
+\emph{Brownian} kernel. The last implementation corresponds to the
+\emph{Gaussian} kernel.
+
+\paragraph{Sampling from a Gaussian process and plots.}
+The sampling function is completed by evaluating the provided kernel on the
+input data. After that $n$ random samples are taken from a multivariate normal
+with the provided mean ($\mu$) and the kernel as the covariance parameter.
+\Cref{fig_gpsamples} presents samplings of the same kernel with different
+parameters. The plot on the left uses $\theta=0.8$ which leads to a wider
+``waves''.
+\begin{figure}
+    \centering
+    \input{../lab1/gpsamples.pgf}
+    \caption{Sample from a Gaussian process with kernel evaluated using the wing
+    length of the helicopter. The kernel for the left sampling of five functions
+    is \emph{Matern32} with $\sigma^2=1.0$ and $\theta=0.2$. The second plot is
+    the same kernel, this time with only three functions and $\theta=0.8$}
+    \label{fig_gpsamples}
+  \end{figure}
+
+\paragraph{Gaussian process regression for prediction.} 
