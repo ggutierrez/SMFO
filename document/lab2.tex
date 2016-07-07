@@ -1,0 +1,46 @@
+% -*- root: main.tex -*-
+\section{Lab session 2}
+
+In this lab the design of experiments was implemented in order to generate the initial helicopter data set in order to measure several falling times. The idea was to define a design of experiment (DoE) which the best filling space properties.
+
+\subsection{Choosing the best design of experiment}
+
+Filling space properties for a DoE were measured using several measures that were defined and explained in the lecture sessions as follows:
+
+\begin{itemize}
+	\item Maximin: The minimum distance between two points should be large, then the larger the measure the better the DoE is.
+	\item Minmax: The maximum distance between any point in the space and a point in DoE should be small, then, the smaller the measure the better the DoE is.
+	\item Discrepancy: The less the discrepancy the better the design of experiment, converging to the uniform distribution.
+\end{itemize}
+
+For the case it was neccesary to program methods to generate experiments, The Latin Hypercube and the kmeans, both these methods were comapred with a random sample using the discrepancy measures and some plots. In table \ref{tab:doe_eval} the quality evaluation for each DoE is showed. For our setting, the latin hypercube showed the best behavior, being the second best one for all the criteria, even though the random method is the best evaluated by discrepancy and maximin, in mini max is the worst one.
+
+\begin{center}
+	\captionof{table}{DoE quality evaluation} \label{tab:doe_eval} 
+	\begin{tabular}{l*{6}{c}r}
+		DoE              & Discrepancy & Maximin & MiniMax \\
+		\hline
+		Random Method    & 0.122 & 0.542 & 0.662 \\
+		Latin Hypercube  & 0.2 & 0.527 & 0.611 \\
+		kmeans           & 0.527 & 0.424 & 0.474 \\
+		\label{tab_doe}
+	\end{tabular}
+\end{center}
+
+The kmeans outperforms the Latin hypercubeusing the minimax criteria, even though if one takes a look to the projections of the points on some variables the points distribute as showed in figure \ref{fig_wl_vs_ww_lhd} and \ref{fig_wl_vs_ww_kmeans}, this plots show that the latin hypercube has better projection capacity that the kmeans for our setting. Thus, the Latin hypercube was chosen as the DoE.
+
+\begin{figure}
+	\begin{subfigure}[h]{.5\linewidth}
+		\input{../lab2/wing_width_vs_wing_length_lhd.pgf}
+		\caption{Wing length against Wing width.}
+		\label{fig_wl_vs_ww_lhd}
+	\end{subfigure}
+	\begin{subfigure}[h]{.5\linewidth}
+		\input{../lab2/wing_width_vs_wing_length_kmeans.pgf}
+		\caption{Wing length against wing width.}
+		\label{fig_wl_vs_ww_kmeans}
+	\end{subfigure}
+	\caption{Plots of DoE projected in a 2D space.}
+\end{figure}
+
+After this process it was neccesary to transform the DoE to the printing space in which it had to fulfill several constraints to be printed.

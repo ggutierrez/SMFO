@@ -5,13 +5,13 @@ In the previous section several designs of experiments (Doe) were implemented an
 
 \subsection{Analyzing Data}
 
-The collected data was further analyzed in order to determine the observation noise, and other correlations of the variables used by the model. Inititally the 4 falling times were plotted, in fig \ref{fig_EX1_EX1} and \ref{fig_EX1_EX2} are illustrated two scatter plots wich represents the measurements from two observers for the same throw and from the same observer for different throws. Between different observers there is not a lot of noise as in the measurement for different throws. despite of that fact, in a first setting a Gaussian Process model was fitted using only two falling times, the average time of the first throw and the average time of the second throw.
+The collected data was further analyzed in order to determine the observation noise, and other correlations of the variables used by the model. Inititally the 4 falling times were plotted, in figure \ref{fig_EX1_EX1} and \ref{fig_EX1_EX2} are illustrated two scatter plots wich represents the measurements from two observers for the same throw and from the same observer for different throws. Between different observers there is not a lot of noise as in the measurement for different throws. despite of that fact, in a first setting a Gaussian Process model was fitted using only two falling times, the average time of the first throw and the average time of the second throw.
 
 \paragraph{}
 In that setting the leave one out function had to be modified in order to retrieve the two observations for a same set of parameters or helicopter, then a $Q2$ quality measure was used to measure the prediction power of the proposed model, however the $Q2$ was very low, aproximately 0.1, the recommended value to state that the model was correct was at least 0.5, the model is better when the $Q2$ is close to one.
 
 \paragraph{}
-One of the assumptions for the $Q2$ to not be as high as expected was that the gathered data was very noisy and didn't expose the correlations between some of the variables and the falling time, according to some prior assumptions made, for example, that the wing angle an the falling time were linear increasingly correlated, the wing length to tail ratio was also expected to have a linear correlation with falling time. In fig ure
+One of the assumptions for the $Q2$ to not be as high as expected was that the gathered data was very noisy and didn't expose the correlations between some of the variables and the falling time, according to some prior assumptions made, for example, that the wing angle and the falling time were linear increasingly correlated, the wing length to tail ratio was also expected to have a linear correlation with falling time. In figure
 \ref{fig_wtr_vs_obs2} the linear correlation between the ratio and the falling time is not as clear as in the figure \ref{fig_wtr_vs_avg4}. While in the first figure only the measurment of one observer was ploted in the second figure the average of all four measurements was taken, exposing a better linear correlation, as expected.
 
 
@@ -52,6 +52,16 @@ Another Assumption made to explain the $Q2$ value was the simplicity of the mode
 \begin{figure}[h]
 	\centering
 	\input{../lab3/mloovsreal.pgf}
-	\caption{Comparison between the two times registered for one throw.}
+	\caption{Plor of real falling time values vs loo predictions.}
 	\label{mloo_vs_real}
+\end{figure}
+
+\paragraph{}
+For further model validation the standarized residuals of the leave one out predictions where also computed and plotted against the mean predicted value(standarized for this case), the plot shows something not very similar to a linear tendency according to a normal distribution $\mathcal{N}(0,1)$ as will be expected for better fitted models.
+
+\begin{figure}[h]
+	\centering
+	\input{../lab3/mlooresidualsvsreal.pgf}
+	\caption{Plot of Loo residuals vs Mean predicted value.}
+	\label{mlooresiduals_vs_real}
 \end{figure}
