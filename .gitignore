@@ -8,3 +8,6 @@ document/main.log
 document/main.synctex.gz
 lab1/.ipynb_checkpoints/Lab1LinearRegression-checkpoint.ipynb
 main.pdf
+helicoptersLHD.log
+helicoptersLHD.aux
+helicoptersLHD.fdb_latexmk
